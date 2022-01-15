@@ -1,21 +1,3 @@
-/* Darsga topshiriq:
-1) o'zgaruvchan numberOfNews yarating va foydalanuvchidan savolga javobini qo'ying:
-"Siz qancha yangilik ko'rdingiz?"
-2) personalNewsDB obyektini yarating va unga quyidagi xususiyatlarni qo'ying:
-- count - birinchi savolga javob shu erda beriladi
-- news - bu ob'ektga bo'sh ob'ektni qo'ying
-- actors - shuningdek, bo'sh ob'ekt joylashtiradilar
-- genres - bu erda bo'sh massivni qo'ying
-- privat - bu xususiyatga mantiqiy (boolean) false qiymatini qo'ying
-3) foydalanuvchiga ikkita savol bering:
-  - "Oxirgi ko'rgan yangiliklarizdan biri?"
-  - 'Unga qancha baho bergan bo'lar edingiz?'
-Javoblar alohida o'zgaruvchilarga joylashtirilishi kerak.
-Yangiliklar ob'ektiga javoblarni quyidagi shaklda yozing:
-  news: {
-    'BBC': '8.1'
-  }
-Konsolda hamma narsa xatosiz ishlashini tekshiring */
 "use strict";
 
 const numberOfNews = +prompt("Siz qancha yangliki ko'rdingiz?");
@@ -26,9 +8,25 @@ const personalNewsDB = {
   genres: [],
   privat: false,
 };
+for (let i = 0; i < 2; i++) {
+  const a = prompt("Oxirgi ko'rgan yanglingizdan biri?"),
+    b = prompt("Unga qancha baho bergan bo'lardingiz?");
 
-const a = prompt("Oxirgi ko'rgan yanglingizdan biri?"),
-  b = prompt("Unga qancha baho bergan bo'lardingiz?");
-
-personalNewsDB.news[a] = b;
+  if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+    personalNewsDB.news[a] = b;
+    console.log("Tayyor");
+  } else {
+    console.log("Error");
+    i--;
+  }
+}
+if (personalNewsDB.count < 10) {
+  console.log("Judda kam yangliklar o'qilibdi!");
+} else if (personalNewsDB.count >= 10 && personalNewsDB.count < 30) {
+  console.log("Siz klassik tomoshbinsiz!");
+} else if (personalNewsDB.count >= 30) {
+  console.log("Siz yangliklar ishqibozi ekansiz!");
+} else {
+  console.log("Xatolik yuz berdi");
+}
 console.log(personalNewsDB);
