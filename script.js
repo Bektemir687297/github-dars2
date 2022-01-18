@@ -4,7 +4,6 @@ let numberOfNews;
 
 function startProject() {
   numberOfNews = +prompt("Siz qancha yangliki ko'rdingiz?");
-
   while (numberOfNews == "" || numberOfNews == null || isNaN(numberOfNews)) {
     numberOfNews = +prompt("Siz qancha yangliki ko'rdingiz?");
   }
@@ -23,7 +22,6 @@ function rememberNews() {
   for (let i = 0; i < 2; i++) {
     const a = prompt("Oxirgi ko'rgan yanglingizdan biri?"),
       b = prompt("Unga qancha baho bergan bo'lardingiz?");
-
     if (a != null && b != null && a != "" && b != "" && a.length < 50) {
       personalNewsDB.news[a] = b;
       console.log("Tayyor");
